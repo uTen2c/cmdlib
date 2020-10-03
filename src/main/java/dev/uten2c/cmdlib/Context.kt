@@ -20,7 +20,6 @@ class Context internal constructor(private val ctx: CommandContext<CommandListen
     val location: Location? get() = source.bukkitLocation
     val world: World? get() = source.bukkitWorld
 
-    fun <T> get(name: String, type: Class<T>): T = ctx.getArgument(name, type)
     fun getBoolean(name: String): Boolean = BoolArgumentType.getBool(ctx, name)
     fun getDouble(name: String): Double = DoubleArgumentType.getDouble(ctx, name)
     fun getFloat(name: String): Float = FloatArgumentType.getFloat(ctx, name)

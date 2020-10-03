@@ -119,12 +119,6 @@ class CommandBuilder(private val builder: ArgumentBuilder<Source, *>) {
         builder.then(arg)
     }
 
-    fun <T> custom(name: String, type: ArgumentType<T>, child: CommandBuilder.() -> Unit) {
-        val arg = argument<Source, T>(name, type)
-        child(CommandBuilder(arg))
-        builder.then(arg)
-    }
-
     @Suppress("UNCHECKED_CAST")
     fun executes(process: Context.() -> Unit) {
         builder.executes {

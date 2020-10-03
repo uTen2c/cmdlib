@@ -3,8 +3,6 @@ package dev.uten2c.cmdlib
 import com.mojang.brigadier.arguments.*
 import com.mojang.brigadier.context.CommandContext
 import net.minecraft.server.v1_16_R2.*
-import org.bukkit.Location
-import org.bukkit.World
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Entity
 import org.bukkit.entity.Player
@@ -15,10 +13,8 @@ import java.util.*
 class Context internal constructor(private val ctx: CommandContext<CommandListenerWrapper>) {
 
     private val source = ctx.source
-    val sender: CommandSender get() = source.bukkitSender
-    val entity: Entity? get() = source.bukkitEntity
-    val location: Location? get() = source.bukkitLocation
-    val world: World? get() = source.bukkitWorld
+    val sender: CommandSender = source.bukkitSender
+    val player: Player = source.h().bukkitEntity
 
     fun getBoolean(name: String): Boolean = BoolArgumentType.getBool(ctx, name)
     fun getDouble(name: String): Double = DoubleArgumentType.getDouble(ctx, name)

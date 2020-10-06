@@ -119,6 +119,12 @@ class CommandBuilder(private val builder: ArgumentBuilder<Source, *>) {
         builder.then(arg)
     }
 
+    fun message(name: String, child: CommandBuilder.() -> Unit) {
+        val arg = argument<Source, ArgumentChat.a>(name, ArgumentChat.a())
+        child(CommandBuilder(arg))
+        builder.then(arg)
+    }
+
     @Suppress("UNCHECKED_CAST")
     fun executes(process: Context.() -> Unit) {
         builder.executes {

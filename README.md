@@ -45,6 +45,12 @@ cmdLib.register("example") {
       }
     }
   }
+  
+  literal("error") {
+    executes {
+      throw CommandError("Some error message")
+    }
+  }
 }
 ```
 
@@ -63,6 +69,7 @@ cmdLib.register("example") {
 - `itemStack`
 - `uuid`
 - `vector`
+- `message`
 
 ## Tips
 - `executes`内で`player`を使用するときコマンドの実行者がプレイヤーでない場合実行に失敗するので`sender`がプレイヤーであるかの検証をする必要はない

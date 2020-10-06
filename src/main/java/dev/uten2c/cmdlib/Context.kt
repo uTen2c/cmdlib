@@ -2,8 +2,6 @@ package dev.uten2c.cmdlib
 
 import com.mojang.brigadier.arguments.*
 import com.mojang.brigadier.context.CommandContext
-import com.mojang.brigadier.exceptions.CommandSyntaxException
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType
 import net.minecraft.server.v1_16_R2.*
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Entity
@@ -33,5 +31,5 @@ class Context internal constructor(private val ctx: CommandContext<CommandListen
     fun getItemStack(name: String): ItemStack = ArgumentItemStack.a(ctx, name).a(1, false).bukkitStack
     fun getUUID(name: String): UUID = ArgumentUUID.a(ctx, name)
     fun getVector(name: String): Vector = ArgumentVec3.a(ctx, name).let { Vector(it.x, it.y, it.z) }
-    fun getMessage(name: String): String = ArgumentChat.a(ctx, "msg").stream().map { it.text }.filter { it.isNotEmpty() }.collect(Collectors.joining())
+    fun getMessage(name: String): String = ArgumentChat.a(ctx, name).stream().map { it.text }.filter { it.isNotEmpty() }.collect(Collectors.joining())
 }

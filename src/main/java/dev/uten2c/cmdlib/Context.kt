@@ -14,8 +14,8 @@ import java.util.stream.Collectors
 class Context internal constructor(private val ctx: CommandContext<CommandListenerWrapper>) {
 
     private val source = ctx.source
-    val sender: CommandSender = source.bukkitSender
-    val player: Player = source.h().bukkitEntity
+    val sender: CommandSender get() = source.bukkitSender
+    val player: Player get() = source.h().bukkitEntity
 
     fun getBoolean(name: String): Boolean = BoolArgumentType.getBool(ctx, name)
     fun getDouble(name: String): Double = DoubleArgumentType.getDouble(ctx, name)

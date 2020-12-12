@@ -33,25 +33,25 @@ class CommandBuilder(private val builder: ArgumentBuilder<Source, *>) {
         builder.then(arg)
     }
 
-    fun double(name: String, min: Double = Double.MIN_VALUE, max: Double = Double.MAX_VALUE, child: CommandBuilder.() -> Unit) {
+    fun double(name: String, min: Double = -1.7976931348623157E308, max: Double = 1.7976931348623157E308, child: CommandBuilder.() -> Unit) {
         val arg = argument<Source, Double>(name, DoubleArgumentType.doubleArg(min, max))
         child(CommandBuilder(arg))
         builder.then(arg)
     }
 
-    fun float(name: String, min: Float = Float.MIN_VALUE, max: Float = Float.MAX_VALUE, child: CommandBuilder.() -> Unit) {
+    fun float(name: String, min: Float = -3.4028235E38f, max: Float = 3.4028235E38f, child: CommandBuilder.() -> Unit) {
         val arg = argument<Source, Float>(name, FloatArgumentType.floatArg(min, max))
         child(CommandBuilder(arg))
         builder.then(arg)
     }
 
-    fun integer(name: String, min: Int = Int.MIN_VALUE, max: Int = Int.MAX_VALUE, child: CommandBuilder.() -> Unit) {
+    fun integer(name: String, min: Int = -2147483648, max: Int = 2147483647, child: CommandBuilder.() -> Unit) {
         val arg = argument<Source, Int>(name, IntegerArgumentType.integer(min, max))
         child(CommandBuilder(arg))
         builder.then(arg)
     }
 
-    fun long(name: String, min: Long = Long.MIN_VALUE, max: Long = Long.MAX_VALUE, child: CommandBuilder.() -> Unit) {
+    fun long(name: String, min: Long = -9223372036854775807L, max: Long = 9223372036854775807L, child: CommandBuilder.() -> Unit) {
         val arg = argument<Source, Long>(name, LongArgumentType.longArg(min, max))
         child(CommandBuilder(arg))
         builder.then(arg)

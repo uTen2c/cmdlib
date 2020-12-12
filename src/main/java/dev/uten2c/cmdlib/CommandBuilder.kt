@@ -33,8 +33,8 @@ class CommandBuilder(private val builder: ArgumentBuilder<Source, *>) {
         builder.then(arg)
     }
 
-    fun double(name: String, min: Number = Double.MIN_VALUE, max: Number = Double.MAX_VALUE, child: CommandBuilder.() -> Unit) {
-        val arg = argument<Source, Double>(name, DoubleArgumentType.doubleArg(min.toDouble(), max.toDouble()))
+    fun double(name: String, min: Double = Double.MIN_VALUE, max: Double = Double.MAX_VALUE, child: CommandBuilder.() -> Unit) {
+        val arg = argument<Source, Double>(name, DoubleArgumentType.doubleArg(min, max))
         child(CommandBuilder(arg))
         builder.then(arg)
     }

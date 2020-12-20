@@ -5,7 +5,7 @@ import com.mojang.brigadier.builder.ArgumentBuilder
 import com.mojang.brigadier.builder.LiteralArgumentBuilder.literal
 import com.mojang.brigadier.builder.RequiredArgumentBuilder.argument
 import com.mojang.brigadier.context.CommandContext
-import net.minecraft.server.v1_16_R3.*
+import net.minecraft.server.v1_16_R2.*
 import org.bukkit.command.CommandSender
 import java.util.*
 import java.util.concurrent.CompletableFuture

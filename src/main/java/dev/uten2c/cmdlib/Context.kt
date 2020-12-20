@@ -2,7 +2,7 @@ package dev.uten2c.cmdlib
 
 import com.mojang.brigadier.arguments.*
 import com.mojang.brigadier.context.CommandContext
-import net.minecraft.server.v1_16_R3.*
+import net.minecraft.server.v1_16_R2.*
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Entity
 import org.bukkit.entity.Player

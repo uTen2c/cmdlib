@@ -9,7 +9,7 @@ plugins {
 base {
     archivesBaseName = "cmdlib"
     group = "dev.uten2c"
-    version = "1.16.5+.1"
+    version = "1.16.5+1"
 }
 
 java {

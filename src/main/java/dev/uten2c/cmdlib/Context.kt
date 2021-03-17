@@ -2,6 +2,8 @@ package dev.uten2c.cmdlib
 
 import com.mojang.brigadier.arguments.*
 import com.mojang.brigadier.context.CommandContext
+import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.serializer.gson.GsonComponentSerializer
 import net.minecraft.server.v1_16_R3.*
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Entity
@@ -9,7 +11,6 @@ import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.bukkit.util.Vector
 import java.util.*
-import java.util.stream.Collectors
 
 class Context internal constructor(private val ctx: CommandContext<CommandListenerWrapper>) {
 
@@ -31,5 +32,5 @@ class Context internal constructor(private val ctx: CommandContext<CommandListen
     fun getItemStack(name: String): ItemStack = ArgumentItemStack.a(ctx, name).a(1, false).bukkitStack
     fun getUUID(name: String): UUID = ArgumentUUID.a(ctx, name)
     fun getVector(name: String): Vector = ArgumentVec3.a(ctx, name).let { Vector(it.x, it.y, it.z) }
-    fun getMessage(name: String): String = ArgumentChat.a(ctx, name).stream().map { it.text }.filter { it.isNotEmpty() }.collect(Collectors.joining())
+    fun getMessage(name: String): Component = GsonComponentSerializer.gson().deserialize(IChatBaseComponent.ChatSerializer.a(ArgumentChat.a(ctx, name)))
 }
